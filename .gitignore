@@ -152,7 +152,7 @@ Thumbs.db #thumbnail cache on Windows
 .prof
 
 .idea/
-.sqlite3
 .xml
 .iml
 .venv
+ db.sqlite3
