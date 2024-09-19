@@ -2,6 +2,11 @@
 <section class="section">
   <div class="columns is-variable is-8">
     <div class="column is-5 is-offset-1">
+        {% if  post.image %}
+            <figure class="image mb-6">
+                <img src="{{ post.image.url }}" alt="image">
+            </figure>
+        {% endif %}
       <div class="content is-medium">
         <h2 class="subtitle is-5 has-text-grey">
           {{ post.created_at|timesince }} ago

@@ -1,13 +1,17 @@
 {% extends 'base/base.html' %}
 
 {% block title %}
-  {{ category.title }} | My Blog
+    Search |
 {% endblock %}
 
 {% block content %}
 <section class="section">
   <div class="columns is-variable is-8">
     <div class="column is-5 is-offset-1">
+      <div class="content is-medium">
+          <h1>Search results</h1>
+          <h3>Query "{{query}}"</h3>
+      </div>
       {% for post in posts %}
       <div class="content is-medium">
         <a href="{% url 'post_detail' post.category.slug post.slug %}">
@@ -20,7 +24,7 @@
       </div>
       {% empty %}
           <div class="content">
-            <p>There is no posts in this category...</p>
+            <p>No result for the given query...</p>
           </div>
       {% endfor %}
     </div>

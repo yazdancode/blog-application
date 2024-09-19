@@ -65,27 +65,27 @@
         <div id="navbarMenu" class="navbar-menu">
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="control has-icons-left">
-                <label>
-                  <input
-                    class="input is-rounded"
-                    type="email"
-                    placeholder="Search"
-                  />
-                </label>
-                <span class="icon is-left">
-                  <i class="fa fa-search"></i>
-                </span>
-              </div>
+              <form method="get" action="{% url 'search' %}">
+                <div class="control has-icons-left">
+                  <label>
+                    <input
+                      class="input is-rounded"
+                      name="query"
+                      type="text"
+                      placeholder="Search"
+                    />
+                  </label>
+                  <span class="icon is-left">
+                    <i class="fa fa-search"></i>
+                  </span>
+                </div>
+              </form>
             </div>
-            <a class="navbar-item is-active is-size-5 has-text-weight-semibold">
+            <a href="{% url  'frontpage' %}" class="navbar-item is-active is-size-5 has-text-weight-semibold">
               Home
             </a>
-            <a class="navbar-item is-size-5 has-text-weight-semibold">
-              Examples
-            </a>
-            <a class="navbar-item is-size-5 has-text-weight-semibold">
-              Features
+            <a href="{% url 'about' %}" class="navbar-item is-size-5 has-text-weight-semibold">
+              About
             </a>
           </div>
         </div>
@@ -93,7 +93,9 @@
     </nav>
 
     <section class="section">
-      <div class="container">{% block content %} {% endblock content %}</div>
+      <div class="container">
+        {% block content %} {% endblock content %}
+      </div>
     </section>
     <footer class="footer">
       <div class="content has-text-centered">
@@ -104,5 +106,17 @@
       type="text/javascript"
       src="{% static 'base/js/main.js' %}"
     ></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const burger = document.querySelector('.burger');
+        const menu = document.getElementById('navbarMenu');
+
+        burger.addEventListener('click', () => {
+          burger.classList.toggle('is-active');
+          menu.classList.toggle('is-active');
+        });
+      });
+    </script>
   </body>
 </html>
